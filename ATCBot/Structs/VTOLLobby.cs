@@ -191,7 +191,7 @@ namespace ATCBot.Structs
                 badKeys.Add("lModCount");
 
             if (!lobby.Metadata.TryGetValue("lMods", out loadedMods) && Enum.Parse<FeatureType>(feature) == FeatureType.m)
-                badKeys.Add("lModCount");
+                badKeys.Add("lMods");
 
 
 
