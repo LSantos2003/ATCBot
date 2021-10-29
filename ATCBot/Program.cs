@@ -345,7 +345,7 @@ namespace ATCBot
                         Log.LogWarning("Invalid lobby state!", "VTOL Embed Builder", true);
                         continue;
                     }
-                    string content = $"{lobby.ScenarioName}\n{lobby.PlayerCount}/{lobby.MaxPlayers} Players\nv{lobby.GameVersion}{(lobby.Feature == VTOLLobby.FeatureType.m ? " *(Modded)*" : "")}";
+                    string content = $"{lobby.ScenarioName}\n{lobby.PlayerCount}/{lobby.MaxPlayers} Players\nv{lobby.GameVersion}{(lobby.Feature == VTOLLobby.FeatureType.m ? $" *(Modded)*\n{lobby.ModCount}" : "")}";
                     vtolEmbedBuilder.AddField(lobby.LobbyName, content);
                 }
                 if(LobbyHandler.PasswordedLobbies > 0)

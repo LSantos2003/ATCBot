@@ -22,7 +22,7 @@ namespace ATCBot.Structs
         private string briefingRoom;
         private string passwordHash;
         private int playerCount;
-
+        private string modCount;
         /// <summary>
         /// Represents the version status of a lobby.
         /// </summary>
@@ -48,6 +48,8 @@ namespace ATCBot.Structs
             /// <summary />
             Night
         }
+
+
 
         /// <summary>
         /// The name of the lobby.
@@ -115,6 +117,11 @@ namespace ATCBot.Structs
         /// </summary>
         public bool PasswordProtected() => PasswordHash != 0;
 
+        /// <summary>
+        /// How many mods are loaded in the lobby.
+        /// </summary>
+        public string ModCount { get => $"{modCount} mod{(int.Parse(modCount) != 1 ? "s" : "")}"; private set => modCount = value; }
+
         /// <summary>Create a lobby from a SteamKit2 lobby.</summary>
         public VTOLLobby(SteamMatchmaking.Lobby lobby)
         {
@@ -167,6 +174,13 @@ namespace ATCBot.Structs
 
             if (!lobby.Metadata.TryGetValue("pwh", out passwordHash))
                 badKeys.Add("pwh");
+
+            if (!lobby.Metadata.TryGetValue("lModCount", out modCount) && Feature == FeatureType.m)
+                badKeys.Add("lModCount");
+                
+            
+
+
 
             if (badKeys.Count > 0)
             {
