@@ -38,7 +38,7 @@ namespace ATCBot.Commands
             {
                 int lobbyToFind = Convert.ToInt32(command.Data.Options.ElementAt(0).Value);
 
-                //Needs to loop through incase the lobby has an invalid state
+                //Needs to loop through in case the lobby has an invalid state
                 int lobbyIndex = 1;
                 foreach (VTOLLobby lobby in Program.lobbyHandler.vtolLobbies.Where(l => !l.PasswordProtected()))
                 {
@@ -50,7 +50,10 @@ namespace ATCBot.Commands
 
                     if (lobbyIndex == lobbyToFind)
                     {
-                        return $"Lobby has {lobby.ModCount} loaded";
+                        if (lobby.Feature == VTOLLobby.FeatureType.m)
+                            return $"Lobby has {lobby.LoadedMods} loaded";
+                        else
+                            return "Lobby is not a modded lobby";
                     }
                     lobbyIndex++;
                 }

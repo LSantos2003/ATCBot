@@ -10,6 +10,7 @@ namespace ATCBot.Structs
     /// </summary>
     public struct VTOLLobby
     {
+        //Vanilla lobby info
         private string lobbyName;
         private string ownerName;
         private string ownerId;
@@ -22,6 +23,8 @@ namespace ATCBot.Structs
         private string briefingRoom;
         private string passwordHash;
         private int playerCount;
+
+        //Modloader lobby info
         private string loadedMods;
         private string modCount;
         
@@ -149,6 +152,7 @@ namespace ATCBot.Structs
             List<string> badKeys = new();
 
             playerCount = lobby.NumMembers;
+
 
             if (!lobby.Metadata.TryGetValue("lName", out lobbyName))
                 badKeys.Add("lName");
