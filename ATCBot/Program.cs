@@ -338,6 +338,7 @@ namespace ATCBot
             vtolEmbedBuilder.WithColor(Color.DarkGrey).WithCurrentTimestamp().WithTitle("VTOL VR Lobbies:");
             if (lobbyHandler.vtolLobbies.Count - LobbyHandler.PasswordedLobbies > 0)
             {
+                int lobbyIndex = 1;
                 foreach (VTOLLobby lobby in lobbyHandler.vtolLobbies.Where(l => !l.PasswordProtected()))
                 {
                     if (lobby.OwnerName == string.Empty || lobby.LobbyName == string.Empty || lobby.ScenarioName == string.Empty)
@@ -346,7 +347,8 @@ namespace ATCBot
                         continue;
                     }
                     string content = $"{lobby.ScenarioName}\n{lobby.PlayerCount}/{lobby.MaxPlayers} Players\nv{lobby.GameVersion}{(lobby.Feature == VTOLLobby.FeatureType.m ? $" *(Modded)*\n{lobby.ModCount}" : "")}";
-                    vtolEmbedBuilder.AddField(lobby.LobbyName, content);
+                    vtolEmbedBuilder.AddField($"{lobbyIndex}. {lobby.LobbyName}", content);
+                    lobbyIndex++;
                 }
                 if(LobbyHandler.PasswordedLobbies > 0)
                     vtolEmbedBuilder.WithFooter($"+{LobbyHandler.PasswordedLobbies} password protected {(LobbyHandler.PasswordedLobbies == 1 ? "lobby" : "lobbies")}");
