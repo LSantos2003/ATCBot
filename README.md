@@ -1,3 +1,5 @@
+## IMPORTANT: ATCBot is no longer open source, as its application is niche and it is far more practical to develop it solely for use in the official VTOL VR server. This repository will remain public and archived, but no longer reflects ATCBot's current source code.
+
 # ATCBot
 
 [![Build](https://github.com/Shadowtail117/ATCBot/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Shadowtail117/ATCBot/actions/workflows/dotnet.yml) [![CodeQL](https://github.com/Shadowtail117/ATCBot/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Shadowtail117/ATCBot/actions/workflows/codeql-analysis.yml) ![Release](https://img.shields.io/github/v/release/Shadowtail117/ATCBot?label=Release) ![Pre-release](https://img.shields.io/github/v/release/Shadowtail117/ATCBot?include_prereleases&label=Pre-release)
